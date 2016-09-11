@@ -1,4 +1,5 @@
- var bio={
+//Initializing variable bio
+var bio={
  "name": "Anurita Srivastava",
  "role": "Web developer",
  "contacts":
@@ -14,6 +15,7 @@
  "skills": ["Enthusiast", "Determined", "Helpful", "Foodie", "Pet-lover", "Prefers solitude", "Chooses books over bros", "Returns owed money before time"]
 
 };
+//function to .append() bo
 bio.display=function ()
 {
 var bioName = HTMLheaderName.replace("%data%", bio.name);
@@ -24,6 +26,7 @@ var biopic = HTMLbioPic.replace("%data%", bio.pic);
 $("#header").append(biopic);
 var bioMsg = HTMLwelcomeMsg.replace("%data%", bio.msg);
 $("#header").append(bioMsg);
+//for array inside object
 if(bio.skills.length>0)
 {
 	$("#header").append(HTMLskillsStart);
@@ -46,18 +49,20 @@ if(bio.skills.length>0)
 
 
 }
+//for object inside object
   for(var contact in bio.contacts) {
    var bioMobile = HTMLmobile.replace("%data%", bio.contacts[contact].mobile);
    var bioEmail = HTMLemail.replace("%data%", bio.contacts[contact].email);
    var bioGithub = HTMLgithub.replace("%data%", bio.contacts[contact].github);
     var bioFacebook = HTMLfacebook.replace("%data%", bio.contacts[contact].facebook);
    var bioLocation = HTMLlocation.replace("%data%", bio.contacts[contact].location);
-  
+  //to display contacts on the top
    $("#topContacts").append(bioMobile, bioEmail, bioGithub, bioFacebook, bioLocation);
+   //to display contacts on the bottom
    $("#footerContacts").append(bioMobile, bioEmail, bioGithub, bioFacebook, bioLocation);
 }
 };
-
+//Initialize variable work
 var work=
 {
 	"employer": "SRMADT",
@@ -68,7 +73,7 @@ var work=
 	"url": "http://srmadt.com/"
 
 };
-
+//functin to .append() work
 work.display=function () {
 	 $("#workExperience").append(HTMLworkStart);
 	var workEmployer=HTMLworkEmployer.replace("%data%",work.employer);
@@ -83,7 +88,7 @@ work.display=function () {
 	$(".work-entry:last").children('a').attr('href', work.url);
 	
 };
-
+//Initialize variable project
 var projects = {
    "project": [
   {
@@ -102,6 +107,7 @@ var projects = {
 }
 ]
 };
+//function to .append() projects
 projects.display=function() {
 	 for(var pro in projects.project)
 	 {
@@ -122,7 +128,7 @@ projects.display=function() {
   
 };
 };
-
+//Initialize variable education
 var education=
 {
 "schools":[
@@ -180,7 +186,9 @@ var education=
   }
 ]
 };
+//function to .append() education
 education.display=function() {
+	//for School
 for(edu in education.schools)
 {
 
@@ -197,6 +205,7 @@ for(edu in education.schools)
 	$(".education-entry:last").append(schoolMajor);
 	$(".education-entry:last").children('a').attr('href',  education.schools[edu].url);
 }
+//for OnlineCourses
 	$('#education').append(HTMLonlineClasses);
 for(online in education.onlineClasses)
 {
@@ -211,15 +220,16 @@ for(online in education.onlineClasses)
 	$(".education-entry:last").children('a').attr('href',  education.onlineClasses[online].url);
 }
 };
+//To check position of click on the page
 $(document).click(function(loc){
 	var x=loc.pageX;
 	var y=loc.pageY;
 	logClicks(x,y);
 }
 );
+//Performing Internationalization
 function inName(oldName) {
     var finalName = oldName;
-    // Your code goes here!
     var first="",last="";
 var i=0;
 while(finalName[i]!==" ")
@@ -241,9 +251,11 @@ first=first[0].toUpperCase()+first.slice(1).toLowerCase();
     return finalName;
 };
 
-// Did your code work? The line below will tell you!
+// Internationalization button
 $("#main").append(internationalizeButton);
+//Google Map
 $("#mapDiv").append(googleMap);
+//Calling all functions
 bio.display();
  work.display();
  projects.display();
